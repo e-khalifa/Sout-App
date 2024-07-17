@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sout_app/pages/home.dart';
 
-import 'pages/home.dart';
-
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
             backgroundColor: const Color.fromARGB(255, 51, 46, 46)),
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
