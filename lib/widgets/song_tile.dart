@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:sout_app/pages/song_player.dart';
 
 class SongTile extends StatefulWidget {
   final Audio audio;
@@ -20,26 +21,32 @@ class _SongTileState extends State<SongTile> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: ClipRRect(
-        child: Image.asset(assetsAudioPlayer.getCurrentAudioImage!.path),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => SongPlayerPage(
+                      playlist: Playlist(audios: [widget.audio]),
+                    )));
+      },
+      child: ListTile(
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.asset(widget.audio.metas.image!.path),
+        ),
+        title: Text(
+          widget.audio.metas.title ?? 'No Songs Found',
+          style: const TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+        ),
+        subtitle: Text(widget.audio.metas.artist ?? '',
+            style: TextStyle(
+              color: Colors.grey.shade400,
+              fontSize: 14,
+            )),
+        trailing: getSongDuration(),
       ),
-      title: Text(
-        assetsAudioPlayer.getCurrentAudioTitle == ''
-            ? 'No Songs Found'
-            : assetsAudioPlayer.getCurrentAudioTitle,
-        style: const TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
-      ),
-      subtitle: Text(
-          assetsAudioPlayer.getCurrentAudioArtist == ''
-              ? ''
-              : assetsAudioPlayer.getCurrentAudioArtist,
-          style: TextStyle(
-            color: Colors.grey.shade400,
-            fontSize: 14,
-          )),
-      trailing: getSongDuration(),
     );
   }
 
@@ -48,7 +55,7 @@ class _SongTileState extends State<SongTile> {
       stream: assetsAudioPlayer.realtimePlayingInfos,
       builder: (context, snapshots) {
         if (snapshots.connectionState == ConnectionState.waiting) {
-          return Center(
+          Center(
             child: CircularProgressIndicator(
               color: Colors.grey.shade400,
             ),
@@ -57,6 +64,7 @@ class _SongTileState extends State<SongTile> {
 
         return Text(
           formatDuration(snapshots.data?.duration.inSeconds ?? 0),
+          style: TextStyle(color: Colors.white),
         );
       },
     );

@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
   var playlist = Playlist(audios: [
     Audio('assets/audios/1.mp3',
         metas: Metas(
@@ -67,7 +69,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: ListView(
-          children: [for (var song in playlist.audios) SongTile(audio: song)],
+          children: [for (var audio in playlist.audios) SongTile(audio: audio)],
         ));
   }
 }

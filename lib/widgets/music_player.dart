@@ -22,7 +22,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
   void initPlayer() async {
     try {
       assetsAudioPlayer.open(
-        autoStart: false,
         widget.playlist,
       );
     } catch (e) {
