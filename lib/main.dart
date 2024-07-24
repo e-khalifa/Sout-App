@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
             backgroundColor: const Color.fromARGB(255, 51, 46, 46)),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

@@ -34,6 +34,17 @@ class _MusicPlayerState extends State<MusicPlayer> {
   }
 
   @override
+  void dispose() {
+    try {
+      if (assetsAudioPlayer.isPlaying.value) assetsAudioPlayer.stopped;
+      assetsAudioPlayer.dispose();
+    } catch (e) {
+      print('Error in dispoing asseteAudioPlayer $e');
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: assetsAudioPlayer.realtimePlayingInfos,

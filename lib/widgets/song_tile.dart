@@ -1,6 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:sout_app/pages/song_player.dart';
 
 class SongTile extends StatefulWidget {
   final Audio audio;
@@ -21,32 +20,22 @@ class _SongTileState extends State<SongTile> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) => SongPlayerPage(
-                      playlist: Playlist(audios: [widget.audio]),
-                    )));
-      },
-      child: ListTile(
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.asset(widget.audio.metas.image!.path),
-        ),
-        title: Text(
-          widget.audio.metas.title ?? 'No Songs Found',
-          style: const TextStyle(
-              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-        subtitle: Text(widget.audio.metas.artist ?? '',
-            style: TextStyle(
-              color: Colors.grey.shade400,
-              fontSize: 14,
-            )),
-        trailing: getSongDuration(),
+    return ListTile(
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Image.asset(widget.audio.metas.image!.path),
       ),
+      title: Text(
+        widget.audio.metas.title ?? 'No Songs Found',
+        style: const TextStyle(
+            color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+      ),
+      subtitle: Text(widget.audio.metas.artist ?? '',
+          style: TextStyle(
+            color: Colors.grey.shade400,
+            fontSize: 14,
+          )),
+      trailing: getSongDuration(),
     );
   }
 
@@ -64,7 +53,7 @@ class _SongTileState extends State<SongTile> {
 
         return Text(
           formatDuration(snapshots.data?.duration.inSeconds ?? 0),
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         );
       },
     );
