@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "audio": "assets/audios/1.mp3",
+            "metas": {
+                "title": "What He Wrote",
+                "artist": "Laura Marling",
+                "image": "assets/images/I Speak Because I Can.jpg"
+            }
+        },
+        {
+            "audio": "assets/audios/2.mp3",
+            "metas": {
+                "title": "Put Your Head On My Shoulder",
+                "artist": "Paul Anka",
+                "image": "assets/images/Paul Anka.jpg"
+            }
+        },
+        {
+            "audio": "assets/audios/3.mp3",
+            "metas": {
+                "title": "Le temps de l'amour",
+                "artist": "Francois Hardy",
+                "image": "assets/images/Francois Hardy.jpg"
+            }
+        },
+        {
+            "audio": "assets/audios/4.mp3",
+            "metas": {
+                "title": "Amore che vieni, amore che vai",
+                "artist": "Fabrizio De Andre",
+                "image": "assets/images/Fabrizio De Andre.jpg"
+            }
+        },
+        {
+            "audio": "assets/audios/5.mp3",
+            "metas": {
+                "title": "My Baby Shot Me Down",
+                "artist": "Nancy Sinatra",
+                "image": "assets/images/How Does That Grab You.jpg"
+            }
+        },
+        {
+            "audio": "assets/audios/6.mp3",
+            "metas": {
+                "title": "Wasn't Me",
+                "artist": "Shaggy",
+                "image": "assets/images/Wasn't Me.jpg"
+            }
+        }
+    ],
+    "success": "true"
+}

@@ -9,6 +9,8 @@ class VolumeSlider extends StatefulWidget {
 }
 
 //To Search: it doesn't work throughout the app, it only works on this instance
+// TRY : - Get it one instance || - Pass the value || - Notifier
+
 class _VolumeSliderState extends State<VolumeSlider> {
   final assetsAudioPlayer = AssetsAudioPlayer();
   double sliderValue = 1;
