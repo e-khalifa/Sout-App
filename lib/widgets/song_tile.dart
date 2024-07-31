@@ -19,6 +19,12 @@ class _SongTileState extends State<SongTile> {
   }
 
   @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: ClipRRect(

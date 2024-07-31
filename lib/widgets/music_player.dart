@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
+import 'volume_slider.dart';
+
 class MusicPlayer extends StatefulWidget {
   final Playlist playlist;
   const MusicPlayer({required this.playlist, super.key});
@@ -30,6 +32,12 @@ class _MusicPlayerState extends State<MusicPlayer> {
     assetsAudioPlayer.currentPosition.listen((event) {
       sliderValue = event.inSeconds;
     });
+    assetsAudioPlayer.volume.listen((event) {
+      print('Player<<<<<<<<<Volume event: $event');
+    });
+
+    assetsAudioPlayer.setVolume(volumeNotifier.value);
+    print('Player<<<<<<<<<<<Volume level: ${volumeNotifier.value}');
     setState(() {});
   }
 

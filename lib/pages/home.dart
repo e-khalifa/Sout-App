@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           image: MetasImage.asset(song.metas.image),
         ),
       );
-      playlist.add(audio); // Add the audio to the playlist
+      playlist.add(audio);
     }
     print('Playlist length: ${playlist.length}');
   }
@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     initList();
   }
 

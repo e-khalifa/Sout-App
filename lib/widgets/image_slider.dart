@@ -22,6 +22,12 @@ class _ImageSliderState extends State<ImageSlider> {
   }
 
   @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width,

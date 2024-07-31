@@ -1,6 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:route_transitions/route_transitions.dart';
+import 'package:sout_app/widgets/volume_slider.dart';
 
 import '../pages/song_player.dart';
 
@@ -17,8 +18,16 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
 
   @override
   void initState() {
-    assetsAudioPlayer.open(widget.audio, autoStart: true);
+    initPlayer();
     super.initState();
+  }
+
+  void initPlayer() async {
+    assetsAudioPlayer.open(widget.audio, autoStart: true);
+    assetsAudioPlayer.volume.listen((event) {
+      print('Bottom Player<<<< volume event: $event');
+    });
+    assetsAudioPlayer.setVolume(volumeNotifier.value);
   }
 
   @override

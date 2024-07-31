@@ -12,6 +12,11 @@ class SongPlayerPage extends StatefulWidget {
 
 class _SongPlayerPageState extends State<SongPlayerPage> {
   final assetsAudioPlayer = AssetsAudioPlayer();
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

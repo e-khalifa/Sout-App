@@ -1,6 +1,8 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
+var volumeNotifier = ValueNotifier(1.0);
+
 class VolumeSlider extends StatefulWidget {
   const VolumeSlider({super.key});
 
@@ -9,7 +11,8 @@ class VolumeSlider extends StatefulWidget {
 }
 
 //To Search: it doesn't work throughout the app, it only works on this instance
-// TRY : - Get it one instance || - Pass the value || - Notifier
+// TRY : - Get it one instance: it works, but caused operations (image slider, player bottom) to interfere
+//    || - Notifier
 
 class _VolumeSliderState extends State<VolumeSlider> {
   final assetsAudioPlayer = AssetsAudioPlayer();
@@ -23,34 +26,41 @@ class _VolumeSliderState extends State<VolumeSlider> {
 
   void initPlayer() async {
     assetsAudioPlayer.volume.listen((event) {
-      sliderValue = event;
-      print('$event');
+      setState(() {
+        sliderValue = event;
+      });
+      print('Volume Level: $event');
+      volumeNotifier.value = event;
+      print("Volume Notifier: ${volumeNotifier.value}");
     });
-    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return SliderTheme(
-        data: const SliderThemeData(
-          trackHeight: 10,
-        ),
-        child: RotatedBox(
-          quarterTurns: 3,
-          child: Slider(
-            value: sliderValue,
-            onChanged: (newVolume) {
-              setState(() {
-                sliderValue = newVolume;
-              });
-              assetsAudioPlayer.setVolume(sliderValue);
-            },
-            min: 0,
-            max: 1,
-            divisions: 2,
-            activeColor: Theme.of(context).primaryColor,
-            inactiveColor: Colors.grey.shade400,
-          ),
-        ));
+    return ValueListenableBuilder(
+        valueListenable: volumeNotifier,
+        builder: (context, value, _) {
+          return SliderTheme(
+              data: const SliderThemeData(
+                trackHeight: 10,
+              ),
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: Slider(
+                  value: sliderValue,
+                  onChanged: (newVolume) {
+                    setState(() {
+                      sliderValue = newVolume;
+                    });
+                    assetsAudioPlayer.setVolume(sliderValue);
+                  },
+                  min: 0,
+                  max: 1,
+                  divisions: 2,
+                  activeColor: Theme.of(context).primaryColor,
+                  inactiveColor: Colors.grey.shade400,
+                ),
+              ));
+        });
   }
 }
