@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sout_app/bloc/songs_bloc.dart';
 import 'package:sout_app/pages/home.dart';
+import 'package:sout_app/repository/songs_repository.dart';
 
 void main() async {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+      create: (context) => SongsBloc(SongsRepository()), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
