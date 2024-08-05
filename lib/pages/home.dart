@@ -1,6 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 import 'package:sout_app/widgets/app_logo.dart';
 import 'package:sout_app/widgets/volume_slider.dart';
 
@@ -35,8 +36,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           PopupMenuButton<int>(
-              shadowColor: Colors.black38,
-              color: Colors.black54,
+              shadowColor: ColorUtility.mediumBlack,
+              color: ColorUtility.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           if (state is LoadingSongsState) {
             return Center(
               child: CircularProgressIndicator(
-                color: Colors.grey.shade400,
+                color: ColorUtility.softGrey,
               ),
             );
           } else if (state is LoadedSongsState) {

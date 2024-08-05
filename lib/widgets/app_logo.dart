@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key});
@@ -10,7 +11,7 @@ class AppLogo extends StatelessWidget {
         shaderCallback: (bounds) => LinearGradient(
               colors: [
                 Colors.yellow.shade300,
-                Theme.of(context).primaryColor,
+                ColorUtility.main,
               ],
             ).createShader(Rect.fromLTWH(0, 10, bounds.width, bounds.height)),
         child: const Icon(Icons.graphic_eq));

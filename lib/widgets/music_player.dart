@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 
 import 'volume_slider.dart';
 
@@ -60,7 +61,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
           if (snapShots.connectionState == ConnectionState.waiting) {
             return Center(
                 child: CircularProgressIndicator(
-              color: Colors.grey.shade400,
+              color: ColorUtility.softGrey,
             ));
           }
           return Padding(
@@ -97,13 +98,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
                         ? ''
                         : assetsAudioPlayer.getCurrentAudioArtist,
                     style: TextStyle(
-                      color: Colors.grey.shade400,
+                      color: ColorUtility.softGrey,
                       fontSize: 14,
                     )),
                 const SizedBox(height: 20),
                 Slider(
-                    inactiveColor: Colors.grey.shade400,
-                    activeColor: Theme.of(context).primaryColor,
+                    inactiveColor: ColorUtility.softGrey,
+                    activeColor: ColorUtility.main,
                     value: sliderValue.toDouble(),
                     min: 0.0,
                     max: snapShots.data?.duration.inSeconds.toDouble() ?? 0.0,
@@ -127,14 +128,14 @@ class _MusicPlayerState extends State<MusicPlayer> {
                           formatDuration(
                               snapShots.data?.currentPosition.inSeconds ?? 0),
                           style: TextStyle(
-                            color: Colors.grey.shade400,
+                            color: ColorUtility.softGrey,
                             fontSize: 12,
                           )),
                       Text(
                           formatDuration(
                               snapShots.data?.duration.inSeconds ?? 0),
                           style: TextStyle(
-                            color: Colors.grey.shade400,
+                            color: ColorUtility.softGrey,
                             fontSize: 12,
                           ))
                     ],
@@ -149,7 +150,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     IconButton(
                         iconSize: 25,
                         color: Colors.white,
-                        disabledColor: Colors.grey.shade600,
+                        disabledColor: ColorUtility.mediumGrey,
                         icon: const Icon(
                           Icons.skip_previous,
                         ),
@@ -160,7 +161,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     IconButton(
                         iconSize: 25,
                         color: Colors.white,
-                        disabledColor: Colors.grey.shade600,
+                        disabledColor: ColorUtility.mediumGrey,
                         icon: const Icon(
                           Icons.skip_next,
                         ),
@@ -189,7 +190,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
             width: 70,
             height: 70,
             child: FloatingActionButton(
-                backgroundColor: Theme.of(context).primaryColor,
+                backgroundColor: ColorUtility.main,
                 shape: const CircleBorder(),
                 child: Icon(
                   isPlaying ? Icons.pause : Icons.play_arrow_sharp,

@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 
 var volumeNotifier = ValueNotifier(1.0);
 
@@ -57,8 +58,8 @@ class _VolumeSliderState extends State<VolumeSlider> {
                   min: 0,
                   max: 1,
                   divisions: 2,
-                  activeColor: Theme.of(context).primaryColor,
-                  inactiveColor: Colors.grey.shade400,
+                  activeColor: ColorUtility.main,
+                  inactiveColor: ColorUtility.softGrey,
                 ),
               ));
         });

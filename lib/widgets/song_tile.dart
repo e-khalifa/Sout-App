@@ -1,5 +1,6 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 
 class SongTile extends StatefulWidget {
   final Audio audio;
@@ -38,7 +39,7 @@ class _SongTileState extends State<SongTile> {
       ),
       subtitle: Text(widget.audio.metas.artist ?? '',
           style: TextStyle(
-            color: Colors.grey.shade400,
+            color: ColorUtility.softGrey,
             fontSize: 14,
           )),
       trailing: getSongDuration(),
@@ -52,7 +53,7 @@ class _SongTileState extends State<SongTile> {
         if (snapshots.connectionState == ConnectionState.waiting) {
           Center(
             child: CircularProgressIndicator(
-              color: Colors.grey.shade400,
+              color: ColorUtility.softGrey,
             ),
           );
         }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sout_app/bloc/songs_bloc.dart';
 import 'package:sout_app/pages/home.dart';
 import 'package:sout_app/repository/songs_repository.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 
 void main() async {
   runApp(BlocProvider(
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sout App',
       theme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 202, 38, 27),
+        primaryColor: ColorUtility.main,
         appBarTheme: const AppBarTheme(
-            backgroundColor: Color.fromARGB(255, 51, 46, 46),
+            backgroundColor: ColorUtility.background,
             foregroundColor: Colors.white),
-        colorScheme: ColorScheme.fromSwatch(
-            backgroundColor: const Color.fromARGB(255, 51, 46, 46)),
+        colorScheme:
+            ColorScheme.fromSwatch(backgroundColor: ColorUtility.background),
       ),
       home: const HomePage(),
     );

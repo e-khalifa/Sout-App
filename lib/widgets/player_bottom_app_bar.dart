@@ -1,6 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:route_transitions/route_transitions.dart';
+import 'package:sout_app/utlis/color_utility.dart';
 import 'package:sout_app/widgets/volume_slider.dart';
 
 import '../pages/song_player.dart';
@@ -52,7 +53,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
       child: Container(
         height: 70,
         decoration: const BoxDecoration(
-          color: Colors.black38,
+          color: ColorUtility.mediumBlack,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
@@ -70,7 +71,7 @@ class _PlayerBottomAppBarState extends State<PlayerBottomAppBar> {
           ),
           subtitle: Text(widget.audio.metas.artist ?? '',
               style: TextStyle(
-                color: Colors.grey.shade400,
+                color: ColorUtility.softGrey,
                 fontSize: 14,
               )),
           trailing: playBtn,
